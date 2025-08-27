@@ -119,3 +119,5 @@ buildNumber.properties
 run/
 build
 .gradle
+build-logic/.gradle
+build-logic/.kotlin
