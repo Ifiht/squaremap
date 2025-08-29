@@ -41,11 +41,11 @@ fun Project.currentBranch(): String {
   return Repository.shortenRefName(ref.name)
 }
 
-fun Project.productionJarName(mcVer: Provider<String>): Provider<String> = extensions.getByType<BasePluginExtension>()
-  .archivesName.zip(mcVer) { archivesName, mc -> "$archivesName-mc$mc-$version.jar" }
+fun Project.productionJarName(): Provider<String> = extensions.getByType<BasePluginExtension>()
+  .archivesName.map { archivesName -> "$archivesName-$version.jar" }
 
-fun Project.productionJarLocation(mcVer: Provider<String>): Provider<RegularFile> =
-  productionJarName(mcVer).flatMap { layout.buildDirectory.file("libs/$it") }
+fun Project.productionJarLocation(): Provider<RegularFile> =
+  productionJarName().flatMap { layout.buildDirectory.file("libs/$it") }
 
 fun ProcessResources.expandIn(fileName: String, props: Map<String, Any?>) {
   inputs.properties(props.mapKeys { "${fileName}_${it.key}" })

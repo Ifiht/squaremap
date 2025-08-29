@@ -26,7 +26,8 @@ tasks {
     }
   }
   shadowJar {
-    archiveFileName = productionJarName(minecraftVersion)
+    // archiveFileName = productionJarName()
+    archiveClassifier.set("all")
     listOf(
       "org.incendo.cloud",
       "io.leangen.geantyref",

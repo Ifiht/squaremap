@@ -51,7 +51,7 @@ dependencies {
 squaremapPlatform.modInfoFilePath = "fabric.mod.json"
 
 tasks.remapJar {
-  archiveFileName = productionJarName(libs.versions.minecraft)
+  archiveFileName = productionJarName()
 }
 
 publishMods.modrinth {
